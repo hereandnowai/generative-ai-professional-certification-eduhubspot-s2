@@ -16,8 +16,8 @@ MODEL = os.environ["MODEL"]
 llm = init_chat_model(model=MODEL, model_provider="openrouter", temperature=0)
 
 # define the path to the document and the URL to download it from
-DOCUMENT_PATH = os.path.join(os.path.dirname(__file__), "profile-rr.md")
 DOCUMENT_URL = "https://raw.githubusercontent.com/hereandnowai/genai-and-prompt-engineering-eduhubspot-s1/refs/heads/main/day-6-of-14/6-chatbot-with-text/profile-rr.md"
+DOCUMENT_PATH = os.path.join(os.path.dirname(__file__), "profile-rr.md")
 
 # download the document if it does not exist
 def download_document(url, file_path):
