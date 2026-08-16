@@ -1,5 +1,5 @@
 import gradio as gr
-from chatbot_private import get_streaming_response, DOCUMENT_PATH
+from chatbot import get_streaming_response, DOCUMENT_PATH
 
 def chat_interface(message, history):
     response_text = ""
