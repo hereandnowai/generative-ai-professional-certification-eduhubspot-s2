@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(uv pip *)",
+      "Bash(uv add *)",
+      "Bash(uv run python -c ' *)",
+      "Bash(sed -E 's/\\(=.{6}\\).*/\\\\1***/' .env)"
+    ],
+    "additionalDirectories": [
+      "/Users/hnai/Desktop/generative-ai-professional-certification-eduhubspot-s2"
+    ]
+  }
+}
