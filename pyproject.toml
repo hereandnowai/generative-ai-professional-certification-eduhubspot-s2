@@ -13,5 +13,6 @@ dependencies = [
     "langchain-openai>=1.6.0",
     "langchain-openrouter>=0.2.8",
     "openai>=2.53.0",
+    "pypdf>=6.16.1",
     "python-dotenv>=1.2.2",
 ]

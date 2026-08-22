@@ -17,6 +17,8 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from system_prompt import SYSTEM_PROMPT
 
+load_dotenv()
+
 # step 2: load the environment variables from .env file
 OPENROUTER_API_KEY=os.environ["OPENROUTER_API_KEY"]
 BASE_URL=os.environ["BASE_URL"]
@@ -115,5 +117,3 @@ if __name__ == "__main__":
         for kind, text in get_streaming_response(user_input):
             print(text, end="",flush=True)
         print("\n")
-
-
