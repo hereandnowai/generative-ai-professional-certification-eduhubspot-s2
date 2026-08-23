@@ -19,3 +19,7 @@ vector = embeddings.embed_query("home loan eligibility")
 print("text         : 'home loan eligibility'")
 print("vector dim   :", len(vector))
 print("first 5 dims :", [round(x, 4) for x in vector[:5]])
+
+docs = ["prince", "princess"]
+doc_vectors = embeddings.embed_documents(docs)
+print("\nbatched embedding for docs:", len(doc_vectors), "vectors each of dim", len(doc_vectors[0]))
