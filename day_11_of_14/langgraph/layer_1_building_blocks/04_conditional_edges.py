@@ -12,3 +12,38 @@ model = init_chat_model(
     model_provider="openrouter",
     temperature=0
 )
+
+class S(TypedDict):
+    message: str
+    reply: NotRequired[str]
+
+class Desk(BaseModel):
+    desk: Literal["loans", "cards", "fraud"]
+
+def route(state):
+    choice = cast(Desk, model.with_structured_output(Desk).invoke(
+        "Which desk should handle this message?\n" + state["message"]
+    ))
+    return choice.desk
+
+def loans(state):
+    return {"reply": "[loans desk] happy to help with your loan"}
+
+def cards(state):
+    return {"reply": "[cards desk] let's sort out your card."}
+
+def fraud(state):
+    return {"reply": "[fraud desk] we'll secure your account now."}
+
+b = StateGraph(S)
+b.add_node("loans", loans)
+b.add_node("cards", cards)
+b.add_node("fraud", fraud)
+b.add_conditional_edges(START, route, ["loans", "cards", "fraud"])
+b.add_edge("loans", END)
+b.add_edge("cards", END)
+b.add_edge("fraud", END)
+graph = b.compile()
+
+for msg in ["I want a home loan", "my card was used abroad", "I saw debit in my statement which i never made"]:
+    print(msg, "->", graph.invoke({"message": msg})["reply"])
