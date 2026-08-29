@@ -7,8 +7,6 @@ from langgraph.graph import StateGraph, START, END
 
 load_dotenv()
 
-
-
 model = init_chat_model(
     os.environ["MODEL"],
     model_provider="openrouter",
