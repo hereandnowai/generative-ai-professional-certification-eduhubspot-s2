@@ -45,5 +45,5 @@ b.add_edge("cards", END)
 b.add_edge("fraud", END)
 graph = b.compile()
 
-for msg in ["I want a home loan", "my card was used abroad", "I saw debit in my statement which i never made"]:
+for msg in ["I want a home loan", "my card was used abroad", "I was double-charged for a single purchase"]:
     print(msg, "->", graph.invoke({"message": msg})["reply"])
